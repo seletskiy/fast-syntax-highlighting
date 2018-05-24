@@ -97,6 +97,11 @@ _zsh_highlight()
     # suffix
     (( $+SUFFIX_ACTIVE )) && (( SUFFIX_ACTIVE )) && _zsh_highlight_apply_zle_highlight suffix bold "$SUFFIX_START" "$SUFFIX_END"
 
+    local highlighter
+    for highlighter in $FAST_HIGHLIGHT_CUSTOM_HIGHLIGHTERS; do
+        $highlighter
+    done
+
     return $ret
 
   } always {
